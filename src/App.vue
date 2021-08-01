@@ -1,7 +1,8 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
+
     <router-link to="/slider">Slider</router-link>
+    <h1>PROJET SLIDER VUE JS</h1>
   </div>
   <router-view/>
 </template>
