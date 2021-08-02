@@ -9,9 +9,16 @@ v-bind:key='index'>
 <button @click="next(counter)"><i class="fas fa-chevron-circle-right"></i></button>
 
     </div>
+    <div v-for="(images, index_img) in pictures"
+    v-bind:key="index_img" class="div_img">{{caption(images.id)}}
+      <img :src="images.img" alt="" :style="{border:border}" @click="touch(images.id)">
+    </div>
+
+
 </template>
 
 <script>
+
 export default {
   data:function(){
     return{
@@ -22,7 +29,8 @@ export default {
        {img: 'https://images.unsplash.com/photo-1591867853709-12638a716d58?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHdhdGVyJTIwZmFsbHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', id:4}
 
      ],
-     counter:1
+     counter:1,
+     border: ''
     }
   },methods:{
     prev:function(){
@@ -34,15 +42,22 @@ export default {
       }
     },
     next:function(){
-
+ 
       this.counter++
        if(this.counter == this.pictures.id){
+         this.border = '2px solid orange'
       return  this.pictures[this.counter]
       }else if(this.counter > this.pictures.length){
-   
        this.counter = 1
       }
-  },
+  },caption(a){
+    if(this.counter == a){
+      this.border = '6px solid orange'
+    }else{
+      this.border = 'none'
+    }
+  }
+  
   }
 }
 
@@ -55,6 +70,7 @@ export default {
   margin: auto;
   display: flex;
 }
+
 button{
   z-index: 99;
 background: transparent;
@@ -69,5 +85,21 @@ img{
 }
 i{
   font-size: 3em;
+}
+.container{
+  width: 80%;
+  display: flex;
+}
+.container img{
+  width: 20%;
+}
+.div_img{
+  width: 80%;
+  margin: auto;
+  display: inline;
+  margin-top: 20px;
+}
+.div_img img{
+  width: 20%;
 }
 </style>

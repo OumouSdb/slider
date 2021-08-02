@@ -1,4 +1,4 @@
-# projet-azur
+# slider
 
 ## Project setup
 ```
